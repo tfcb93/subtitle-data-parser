@@ -1,23 +1,10 @@
 {
-  "name": "subtitle-data-parser",
-  "version": "1.0.0",
-  "description": "Parser and save information about subtitles in file structures made for it.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/tfcb93/subtitle-data-parser.git"
-  },
-  "author": "Thiago Felipe C. Borges",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/tfcb93/subtitle-data-parser/issues"
-  },
-  "homepage": "https://github.com/tfcb93/subtitle-data-parser#readme",
-  "dependencies": {
-    "n-readlines": "^1.0.0",
-    "requirejs": "^2.3.6"
-  }
+    "name": "parseLegenda",
+    "version": "0.0.1",
+    "scripts": {},
+    "devDependencies": {},
+    "dependencies": {
+        "n-readlines": "^1.0.0",
+        "requirejs": "^2.3.5"
+    }
 }

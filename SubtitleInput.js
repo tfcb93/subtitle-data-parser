@@ -31,7 +31,6 @@ class SubtitleInput {
          * timeToMs aceita um string contendo hh:mm:ss,MMM
          * 
          * Essa função pode ser passada posteriormente para uma outra biblioteca de utils
-         * Se for manter aqui, atribuir static a ela
          */
         timeToMs(time){
             //Dividimos a sting do tempo separando hora, minuto e segundo, usando a expressão regular abaixo para poder dividir somente uma vez o tempo
@@ -59,26 +58,17 @@ class SubtitleInput {
         }
         csvString(maxLines){
             //header: index, start time, end time, duration, line1,line2,charpline1,charpline2,charpsec
-            let output = this.index + ';' + this.sTime + ';' + this.eTime + ';' + this.dur
+            let output = this.index + ',' + this.sTime + ',' + this.eTime
             let max = maxLines
-            this.lines.forEach((l,key) => {
-                output = output + ';' + l
-                max = max - 1
-            })
-            while(max > 0){
-                output = output + ';'
-                max = max - 1
-            }
-            max = maxLines
             this.charsPerLine.forEach((c,key) => {
-                output = output + ';' + c
+                output = output + ',' + c
                 max = max - 1
             })
+            
             while(max > 0){
-                output = output + ';'
+                output = output + ',' + 0
                 max = max - 1
             }
-            output = output + ";" + this.charsPerSec
             return output
         }
     }

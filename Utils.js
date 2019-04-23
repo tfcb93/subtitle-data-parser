@@ -12,15 +12,16 @@ const fs = require("fs") // Para escrita do arquivo .csv
 function Parser(fileName, subtitles) {
     const lineIterator = new lineReader(fileName)
     let line
+    let index = 1 // we don't get the index of the file because it may contain repetitive index due to errors from the sync-subtitle software
     let counter = 1
     let allSubInputs = []
     let actualInput = {}
-
     actualInput.lines = []
     while(line = lineIterator.next()) {
-        if(counter === 1) {
+        if(counter === 1 && line.toString('utf8').replace('\r','').length !== 0) {
             // index
-            actualInput.indexNum = line.toString('utf8').replace('\r','')
+            actualInput.indexNum = index
+            index++
             counter++
         }
         else if(counter === 2) {
@@ -53,19 +54,16 @@ function ToCSV(legendas,maxEnt,outputName){
     /**
      * escrever dentro do arquivo linha por linha
      */
-  
-    let out = fs.createWriteStream(outputName + '.csv',{flags:'a'}) //'a' é setado para adicionar ao longo do arquivo 'a' = append
-    let header = "index;inicio(ms);fim(ms);duracao(ms)"
+
+    let out = fs.createWriteStream(outputName + '.csv',{flags:'w'}) //'a' é setado para adicionar ao longo do arquivo 'a' = append
+    let header = "index,inicio(ms),fim(ms)"
     for(let i = 1;i <= maxEnt;i++){
-        header = header + ";linha " + i
+        header = header + ",characteres na linha " + i
     }
-    for(let i = 1;i <= maxEnt;i++){
-        header = header + ";characteres na linha " + i
-    }
-    header = header + ";caracteres por segundo" + "\r\n"
+    header = header + "\r\n"
     out.write(header)
     legendas.forEach((l,key)=>{
-        out.write(l.csvString() + "\r\n")
+        out.write(l.csvString(maxEnt) + "\r\n")
     })
 }
 
