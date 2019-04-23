@@ -39,6 +39,7 @@ class Subtitle{
     allToCSV(){
         let out = []
         this.subs.forEach((l,key)=>{
+            
             out.push(l.csvString(this.greatLineNumber))
         })
         return out
