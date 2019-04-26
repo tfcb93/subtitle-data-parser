@@ -48,6 +48,7 @@ A seguir uma lista do que se pretende implementar futuramente
 - Melhorar escrita do arquivo de saída
 - Permitir a customização do arquivo de saída
 - Melhor uso de ECMAScript6
+- Arquivo de saída em JSON
 
 ## English
 
@@ -92,3 +93,4 @@ The following list contains the next goals to be implemented in the future
 - Better writing system.
 - Allow customized output.
 - Better use of ECMAScript6.
+- JSON output.
