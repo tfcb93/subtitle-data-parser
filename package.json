@@ -2,7 +2,7 @@
   "name": "subtitle-data-parser",
   "version": "1.2.0",
   "description": "Parser and save information about subtitles in file structures made for it.",
-  "main": "index.js",
+  "main": "Utils.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
