@@ -1,6 +1,6 @@
 {
   "name": "subtitle-data-parser",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Parser and save information about subtitles in file structures made for it.",
   "main": "Utils.js",
   "scripts": {
