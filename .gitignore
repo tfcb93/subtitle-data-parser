@@ -1,4 +1,7 @@
 node_modules/
-teste.js
+.markdownlint.json
 *.srt
 *.csv
+*.ass
+*.ssa
+*.vtt

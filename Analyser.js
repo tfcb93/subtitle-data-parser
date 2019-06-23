@@ -8,6 +8,8 @@ let counter = 2
 let files = []
 let subtitles
 
+// Check the length of the input and se if it's a file or a directory
+
 while(counter <= (argv.length - 1)){
     if(fs.lstatSync(argv[counter]).isDirectory()){
         files = fs.readdirSync(argv[counter]).filter((file) => {
@@ -26,7 +28,3 @@ while(counter <= (argv.length - 1)){
         counter ++
     }
 }
-
-/**
- * Eu deveria arrumar para *.srt, mas por enquanto... está bom
- */
