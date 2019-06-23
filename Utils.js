@@ -6,8 +6,8 @@ const subInput = require("./SubtitleInput.js")
 const sub = require("./Subtitle.js")
 
 
-const lineReader = require('n-readlines') // Para a leitura do arquivo
-const fs = require("fs") // Para escrita do arquivo .csv
+const lineReader = require('n-readlines') // Read file line by line
+const fs = require("fs") // write of the .csv file
 
 function Parser(fileName, subtitles) {
     const lineIterator = new lineReader(fileName)
@@ -49,13 +49,9 @@ function Parser(fileName, subtitles) {
     return new sub(allSubInputs)
 }
 
-//Eu tenho que arrumar isso para poder usar o toCSV
 function ToCSV(legendas,maxEnt,outputName){
-    /**
-     * escrever dentro do arquivo linha por linha
-     */
 
-    let out = fs.createWriteStream(outputName + '.csv',{flags:'w'}) //'a' é setado para adicionar ao longo do arquivo 'a' = append
+    let out = fs.createWriteStream(outputName + '.csv',{flags:'w'}) //'w' is set to rewrite the file everytime it runs again
     let header = "index,inicio(ms),fim(ms)"
     for(let i = 1;i <= maxEnt;i++){
         header = header + ",characteres na linha " + i

@@ -1,14 +1,14 @@
 class Subtitle{
     constructor(totalSubtitles){
-        this.subs = totalSubtitles //recebe uma lista com todas as legendas encontradas
+        this.subs = totalSubtitles //recive an array with all the subtitle entries
         this.greatLineNumber = this.greatLineNum(totalSubtitles)
         this.maxIndex = this.setMaxIndex(totalSubtitles)
         this.mediumDur = this.calcMediumDur(totalSubtitles)
     }
 
     /**
-     * greatLineNum retorna o maior número de linhas de todas as entradas
-     * esse valor é importante para a criação do CSV
+     * greatLineNum returns the total of lines the biggest line entry has
+     * this value is important to write the csv file
      */
     greatLineNum(subs){
         let max = 0
@@ -20,13 +20,15 @@ class Subtitle{
         return max
     }
     /**
-     * Retorna o maior index da lista de entradas
+     * setMaxIndex sets the last index (biggest index)
+     * It's also important for the csv file write
+     * Still, I don't need to keep this data so I will probably get ride of it in the future
      */
     setMaxIndex(subs){
         return subs[(subs.length - 1)].index
     }
     /**
-     * Retorna o tempo médio de duração para o arquivo inteiro
+     * Retorn the medium time of duration in the file
      */
     calcMediumDur(subs){
         let m = 0
@@ -35,6 +37,10 @@ class Subtitle{
         })
         return m / (subs[(subs.length - 1)].index)
     }
+
+    /**
+     * Write the data of the subtitle in csv format using the entry method
+     */
 
     allToCSV(){
         let out = []

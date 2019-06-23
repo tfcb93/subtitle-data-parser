@@ -28,14 +28,16 @@ class SubtitleInput {
             return totalChar / (dur/1000)
         }
         /**
-         * timeToMs aceita um string contendo hh:mm:ss,MMM
+         * timeToMs accepts a string within hh:mm:ss,MMM
+         * We create this function instead to install an library since it's easy to implement, and another implementations might be heavier for this project.
          * 
-         * Essa função pode ser passada posteriormente para uma outra biblioteca de utils
+         * This function maybe be in utils in the future, and will not be a method
          */
         timeToMs(time){
-            //Dividimos a sting do tempo separando hora, minuto e segundo, usando a expressão regular abaixo para poder dividir somente uma vez o tempo
-            let t = time.split(/[:,]/)
+            // Split the time string separating hour, minute, second using the regular expression below.
+            const t = time.split(/[:,]/)
             let msTime = 0;
+            // t is an array, and we sum for each key value the time converted to miliseconds
             t.forEach((time,key) => {
                 switch(key){
                     case 0:
@@ -57,9 +59,10 @@ class SubtitleInput {
             return msTime
         }
         csvString(maxLines){
-            //header: index, start time, end time, duration, line1,line2,charpline1,charpline2,charpsec
+            // Set the output following the header definition
             let output = this.index + ',' + this.sTime + ',' + this.eTime
             let max = maxLines
+            // Counts each character of the lines and add the value to the csv file 
             this.charsPerLine.forEach((c,key) => {
                 output = output + ',' + c
                 max = max - 1
